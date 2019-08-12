@@ -6,6 +6,7 @@ TagManager:
   tags:
   - doors
   - ghost
+  - Spots
   layers:
   - Default
   - TransparentFX
