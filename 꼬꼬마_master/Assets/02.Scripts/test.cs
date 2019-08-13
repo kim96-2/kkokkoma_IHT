@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class test : MonoBehaviour
 {
-    public GameObject[] targets = new GameObject[7];
+    public GameObject[] targets;
     public GameObject Player;
 
     public Transform TargetPos;
@@ -19,6 +19,7 @@ public class test : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        pathnum = targets.Length;
         paths = Random.Range(0, pathnum-1);
         TargetPos = targets[paths].transform;
 
