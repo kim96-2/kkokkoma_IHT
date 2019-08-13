@@ -38,10 +38,10 @@ public class test : MonoBehaviour
     private void OnTriggerEnter(Collider coll)
     {
         //Debug.Log("in");
-        if (coll.gameObject.name == targets[paths].name)
+        if (coll.gameObject == targets[paths])
         {
             
-            while (coll.gameObject.name == targets[paths].name)
+            while (coll.gameObject == targets[paths])
             {
                 paths = Random.Range(0, pathnum-1);
             }

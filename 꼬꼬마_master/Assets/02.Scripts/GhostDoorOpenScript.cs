@@ -5,6 +5,9 @@ using UnityEngine.AI;
 
 public class GhostDoorOpenScript : MonoBehaviour
 {
+
+    public bool CabinetChecking = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -15,6 +18,10 @@ public class GhostDoorOpenScript : MonoBehaviour
     void Update()
     {
         //Debug.Log(GetComponent<NavMeshAgent>().velocity.magnitude);
+        //if (Mathf.Abs(GetComponent<NavMeshAgent>().velocity.magnitude) < 0.1f) Debug.Log("low speed");
+        //else Debug.Log("high speed");
+
+        if (GetComponent<test>().TargetPos.tag == "Player") CabinetChecking = false;
     }
 
     private void OnTriggerEnter(Collider coll)
@@ -27,16 +34,31 @@ public class GhostDoorOpenScript : MonoBehaviour
             //Debug.Log("out");
         }else if(coll.tag == "cavinets")
         {
-            if (GetComponent<NavMeshAgent>().velocity.magnitude == 0 && GetComponent<test>().TargetPos.tag != "Player")
-            {
-                if (Random.Range(0f, 10f) < 5f)
+
+            if (GetComponent<test>().TargetPos.tag != "Player")
+            {//Mathf.Abs(GetComponent<NavMeshAgent>().velocity.magnitude) < 0.1f && GetComponent<test>().TargetPos.tag != "Player"
+                Debug.Log("Front of Cabinet");
+                if (!CabinetChecking)
                 {
-                    Debug.Log("Open cavinet");
-                    StartCoroutine(OpenCavinet(coll));
+
+                    Debug.Log("checking the cabinet");
+                    CabinetChecking = true;
+
+                    if (Random.Range(0f, 10f) < 5f)
+                    {
+                        Debug.Log("Open cavinet");
+                        StartCoroutine(OpenCavinet(coll));
+                    }
+
                 }
             }
         }
 
+    }
+
+    private void OnTriggerExit(Collider coll)
+    {
+        if (coll.tag == "cavinets") CabinetChecking = false;
     }
 
     IEnumerator OpenCavinet(Collider coll)
@@ -46,7 +68,7 @@ public class GhostDoorOpenScript : MonoBehaviour
         if (coll.gameObject.GetComponent<CavinetTempScript>().open == true) yield break;
         else
         {
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(2f);
             
             
             coll.gameObject.GetComponent<CavinetTempScript>().open = true;
