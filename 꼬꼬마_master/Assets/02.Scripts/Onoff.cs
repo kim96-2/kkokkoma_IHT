@@ -9,10 +9,15 @@ public class Onoff : MonoBehaviour
 
     private void Update()
     {
-    if(On)
+        if(On)
         {
-            Debug.Log("On");
-            Debug.Log(this);
+            GetComponent<MeshRenderer>().material.color = Color.green;
+            //Debug.Log("On");
+            //Debug.Log(this);
+        }
+        else
+        {
+            GetComponent<MeshRenderer>().material.color = Color.white;
         }
     }
     public void  Change()
