@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour
+public class InteractScript : MonoBehaviour
 {
     public float interactDistance = 5f;
     void Start()
