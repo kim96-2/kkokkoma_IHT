@@ -17,7 +17,7 @@ public class InteractScript : MonoBehaviour
         RaycastHit hit;
         if(Physics.Raycast(ray, out hit, interactDistance))
         {
-            if (hit.collider.CompareTag("Door"))
+            if (hit.collider.CompareTag("doors"))
             {
                 hit.collider.transform.parent.GetComponent<DoorScript>().ChangeDoorState();
             }
