@@ -67,14 +67,20 @@ public class PlayerController : MonoBehaviour
     }
     private void TryRun()
     {
-        if (Input.GetKey(KeyCode.LeftShift) && health > 0)
+
+        //스테미나 구현 수정본. 생각보다 까다로운거여서 else말고 안에 else를 한개 더 만들어야됨
+        if (Input.GetKey(KeyCode.LeftShift))
         {
-            Running();
+            if(health > 0)
+                Running();
+            else
+            {
+                isRun = false;
+                applySpeed = walkSpeed;
+            }
         }
-        if (Input.GetKeyUp(KeyCode.LeftShift))
-        {
+        else
             RunningCancel();
-        }
 
     }
 
@@ -83,7 +89,7 @@ public class PlayerController : MonoBehaviour
         isRun = true;
         if (health > 0)
         {
-            health -= 0.01f;
+            health -= 0.2f;
         }
         applySpeed = runSpeed;
 
@@ -92,7 +98,7 @@ public class PlayerController : MonoBehaviour
     {
         isRun = false;
         if (health < 100) {
-            health += 0.01f;
+            health += 0.2f;
         }
         applySpeed = walkSpeed;
 
