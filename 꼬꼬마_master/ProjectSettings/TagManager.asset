@@ -22,12 +22,12 @@ TagManager:
   - doors
   - playerhead
   - player
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - 1F Camera1UI
+  - 1F Camera2UI
+  - 1F Camera3UI
+  - 2F Camera1UI
+  - 2F Camera2UI
+  - 2F Camera3UI
   - 
   - 
   - 
@@ -43,4 +43,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: UI
+    uniqueID: 758360661
     locked: 0
