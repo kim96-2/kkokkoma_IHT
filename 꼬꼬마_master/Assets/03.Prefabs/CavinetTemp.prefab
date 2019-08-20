@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 557268253839826575}
   - component: {fileID: 557268253839826560}
   - component: {fileID: 3436518790563857250}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: PathForCavinet
   m_TagString: Untagged
   m_Icon: {fileID: 419385456094870383, guid: 0000000000000000d000000000000000, type: 0}
@@ -75,7 +75,7 @@ GameObject:
   - component: {fileID: 1947170836282926132}
   - component: {fileID: 1947170836282926133}
   - component: {fileID: 1947170836282926120}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: CavinetTemp
   m_TagString: cavinets
   m_Icon: {fileID: 0}
