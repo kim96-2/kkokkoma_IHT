@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-
+    // 스테미너 
+    [SerializeField]
+    private float health;
 
     // 스피드 조정 변수
 
@@ -65,7 +67,7 @@ public class PlayerController : MonoBehaviour
     }
     private void TryRun()
     {
-        if (Input.GetKey(KeyCode.LeftShift))
+        if (Input.GetKey(KeyCode.LeftShift) && health > 0)
         {
             Running();
         }
@@ -79,12 +81,19 @@ public class PlayerController : MonoBehaviour
     private void Running()
     {
         isRun = true;
+        if (health > 0)
+        {
+            health -= 0.01f;
+        }
         applySpeed = runSpeed;
 
     }
     private void RunningCancel()
     {
         isRun = false;
+        if (health < 100) {
+            health += 0.01f;
+        }
         applySpeed = walkSpeed;
 
     }
