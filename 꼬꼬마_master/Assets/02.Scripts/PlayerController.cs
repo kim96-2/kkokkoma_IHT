@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-
+    // 스테미너 
+    [SerializeField]
+    private float health;
 
     // 스피드 조정 변수
 
@@ -65,26 +67,39 @@ public class PlayerController : MonoBehaviour
     }
     private void TryRun()
     {
+
+        //스테미나 구현 수정본. 생각보다 까다로운거여서 else말고 안에 else를 한개 더 만들어야됨
         if (Input.GetKey(KeyCode.LeftShift))
         {
-            Running();
+            if(health > 0)
+                Running();
+            else
+            {
+                isRun = false;
+                applySpeed = walkSpeed;
+            }
         }
-        if (Input.GetKeyUp(KeyCode.LeftShift))
-        {
+        else
             RunningCancel();
-        }
 
     }
 
     private void Running()
     {
         isRun = true;
+        if (health > 0)
+        {
+            health -= 0.2f;
+        }
         applySpeed = runSpeed;
 
     }
     private void RunningCancel()
     {
         isRun = false;
+        if (health < 100) {
+            health += 0.2f;
+        }
         applySpeed = walkSpeed;
 
     }
