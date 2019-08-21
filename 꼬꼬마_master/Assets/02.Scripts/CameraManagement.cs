@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using UnityEngine.UI;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,6 +13,7 @@ public class CameraManagement : MonoBehaviour
     public Camera camera_2F_2;
     public Camera camera_2F_3;
 
+    public Text CameraText;
     protected Camera[] cameras;
 
     public int CurrentCamera;
@@ -34,7 +36,7 @@ public class CameraManagement : MonoBehaviour
     void Start()
     {
         Current = 0;
-        CurrentCamera = 0;
+        CurrentCamera = 1;
         player.enabled = true;
     }
 
@@ -48,7 +50,7 @@ public class CameraManagement : MonoBehaviour
         {
             CurrentCamera = 0;
         }
-
+        Text();
         cameras[CurrentCamera].enabled = true;
     }
 
@@ -62,7 +64,7 @@ public class CameraManagement : MonoBehaviour
         {
             CurrentCamera = 5;
         }
-
+        Text();
         cameras[CurrentCamera].enabled = true;
     }
 
@@ -72,14 +74,44 @@ public class CameraManagement : MonoBehaviour
         if (Current == 0)
         {
             player.enabled = false;
+            Text();
             cameras[CurrentCamera].enabled = true;
         }
         if (Current == 1)
         {
             cameras[CurrentCamera].enabled = false;
+            Text();
             player.enabled = true;
         }
 
+    }
+
+    void Text()
+    {
+        if (CurrentCamera==0)
+        {
+            CameraText.text = "1F_Living_Room";
+        }
+        if (CurrentCamera==1)
+        {
+            CameraText.text = "1F_Kitchen";
+        }
+        if (CurrentCamera==2)
+        {
+            CameraText.text = "1F_Room";
+        }
+        if (CurrentCamera==3)
+        {
+            CameraText.text = "2F_Room1";
+        }
+        if (CurrentCamera==4)
+        {
+            CameraText.text = "2F_Room2";
+        }
+        if(CurrentCamera==5)
+        {
+            CameraText.text = "2F_Hallway";
+        }
     }
 
     // Update is called once per frame
