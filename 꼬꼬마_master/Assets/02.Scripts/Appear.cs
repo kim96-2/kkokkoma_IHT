@@ -48,7 +48,7 @@ public class Appear : MonoBehaviour
                 CheckingSpot = spots[k];
             }
 
-            CheckingSpot.GetComponent<Onoff>().Change();
+            CheckingSpot.GetComponent<Onoff>().On=true;
             count++;
             
         }
