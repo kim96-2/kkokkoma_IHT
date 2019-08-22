@@ -5,23 +5,34 @@ using UnityEngine;
 public class Onoff : MonoBehaviour
 {
     public bool On = false;
-    // Start is called before the first frame update
 
+    public GameObject InactiveObject;
+    public GameObject ActiveObject;
+
+
+    private void Start()
+    {
+        if(InactiveObject) InactiveObject.SetActive(true);
+        if(ActiveObject) ActiveObject.SetActive(false);
+
+    }
+
+    // Start is called before the first frame update
     private void Update()
     {
         if(On)
         {
-            GetComponent<MeshRenderer>().material.color = Color.green;
-            //Debug.Log("On");
-            //Debug.Log(this);
+            if (InactiveObject) InactiveObject.SetActive(false);
+            if (ActiveObject) ActiveObject.SetActive(true);
         }
         else
         {
-            GetComponent<MeshRenderer>().material.color = Color.white;
+            if (InactiveObject) InactiveObject.SetActive(true);
+            if (ActiveObject) ActiveObject.SetActive(false);
         }
     }
-    public void  Change()
+    public void  turnoff()
     {
-        On = !On;
+        On = false;
     }
 }
