@@ -25,7 +25,8 @@ void Start()
             Quaternion targetRotation = Quaternion.Euler(transform.localRotation.eulerAngles.x, doorOpenAngle, transform.localRotation.eulerAngles.z);
             transform.localRotation = Quaternion.Slerp(transform.localRotation, targetRotation, smoot * Time.deltaTime);
         }
-        else { Quaternion targetRotation2 = Quaternion.Euler(transform.localRotation.eulerAngles.x, doorCloseAngle, transform.localRotation.eulerAngles.z);
+        else {
+            Quaternion targetRotation2 = Quaternion.Euler(transform.localRotation.eulerAngles.x, doorCloseAngle, transform.localRotation.eulerAngles.z);
             transform.localRotation = Quaternion.Slerp(transform.localRotation, targetRotation2, smoot * Time.deltaTime);
         }
     }

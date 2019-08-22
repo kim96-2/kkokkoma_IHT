@@ -62,13 +62,13 @@ public class GhostDoorOpenScript : MonoBehaviour
     {
 
         //스크립트 변경 예정(CavinetTempScript)
-        if (coll.gameObject.GetComponent<CavinetTempScript>().open == true) yield break;
+        if (coll.gameObject.GetComponentInParent<CavinetScript>().open == true) yield break;
         else
         {
             yield return new WaitForSeconds(2f);
             
             
-            coll.gameObject.GetComponent<CavinetTempScript>().open = true;
+            coll.gameObject.GetComponentInParent<CavinetScript>().open = true;
         }
 
         yield break;
