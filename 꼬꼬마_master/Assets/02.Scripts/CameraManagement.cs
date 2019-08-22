@@ -16,6 +16,8 @@ public class CameraManagement : MonoBehaviour
     public Text CameraText;
     protected Camera[] cameras;
 
+    private int First=0;
+
     public int CurrentCamera;
     public int Current;
 
@@ -36,8 +38,15 @@ public class CameraManagement : MonoBehaviour
     void Start()
     {
         Current = 0;
-        CurrentCamera = 1;
+        CurrentCamera = 0;
         player.enabled = true;
+        cameras[0].enabled = false;
+        cameras[1].enabled = false;
+        cameras[2].enabled = false;
+        cameras[3].enabled = false;
+        cameras[4].enabled = false;
+        cameras[5].enabled = false;
+        Text();
     }
 
     void incCamera()
@@ -74,13 +83,13 @@ public class CameraManagement : MonoBehaviour
         if (Current == 0)
         {
             player.enabled = false;
-            Text();
+            
             cameras[CurrentCamera].enabled = true;
         }
         if (Current == 1)
         {
             cameras[CurrentCamera].enabled = false;
-            Text();
+            
             player.enabled = true;
         }
 
@@ -112,6 +121,10 @@ public class CameraManagement : MonoBehaviour
         {
             CameraText.text = "2F_Hallway";
         }
+        if(Current==0)
+        {
+            CameraText.text = " ";
+        }
     }
 
     // Update is called once per frame
@@ -123,10 +136,12 @@ public class CameraManagement : MonoBehaviour
             if (Current == 0)
             {
                 Current = 1;
+                Text();
             }
             else if (Current == 1)
             {
                 Current = 0;
+                Text();
             }
         }
         if (Input.GetKeyUp(KeyCode.E))
