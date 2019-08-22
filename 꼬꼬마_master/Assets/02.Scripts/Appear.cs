@@ -49,7 +49,6 @@ public class Appear : MonoBehaviour
             }
 
             CheckingSpot.GetComponent<Onoff>().Change();
-            Debug.Log("Changed");
             count++;
             
         }

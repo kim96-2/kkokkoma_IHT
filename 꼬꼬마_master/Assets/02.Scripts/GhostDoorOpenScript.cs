@@ -31,22 +31,19 @@ public class GhostDoorOpenScript : MonoBehaviour
         if (coll.tag == "doors")
         {
             coll.gameObject.GetComponentInParent<DoorScript>().open = true;
-            //Debug.Log("out");
         }else if(coll.tag == "cavinets")
         {
 
             if (GetComponent<test>().TargetPos.tag != "Player")
             {//Mathf.Abs(GetComponent<NavMeshAgent>().velocity.magnitude) < 0.1f && GetComponent<test>().TargetPos.tag != "Player"
-                Debug.Log("Front of Cabinet");
                 if (!CabinetChecking)
                 {
 
-                    Debug.Log("checking the cabinet");
                     CabinetChecking = true;
 
                     if (Random.Range(0f, 10f) < 5f)
                     {
-                        Debug.Log("Open cavinet");
+
                         StartCoroutine(OpenCavinet(coll));
                     }
 

@@ -48,7 +48,6 @@ public class GhostSightScript : MonoBehaviour
 
             SpeedSet();
 
-            Debug.Log("Player in");
 
         }else if (IsInSight)//플레이어가 시아에서 없어졌을때
         {
@@ -72,7 +71,6 @@ public class GhostSightScript : MonoBehaviour
             GetComponent<test>().paths = tempPath;
             GetComponent<test>().TargetPos = GetComponent<test>().targets[tempPath].transform;
 
-            Debug.Log("Player out");
         }
     }
 
