@@ -4,18 +4,21 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    // 스테미너 
-    [SerializeField]
-    private float health;
+    // 서브 카메라 전환시 플레이어 이동 금지 구현
+
+    public bool Player_Convert = false;
+
 
     // 스피드 조정 변수
 
-    [SerializeField] // private의 보안수준을 유지하면서 수정가능
-    private float walkSpeed; //이동속도 설정
-    [SerializeField]
-    private float runSpeed;
+
+    private float walkSpeed = 8; //이동속도 설정 
+    private float runSpeed = 15;
     private float applySpeed;
     private float gravity = 20; //캐릭터 컨트롤러에서는 중력을 임의로 만들어야됨
+   // 스테미너 
+    [SerializeField]
+    private float health;
 
     // 이동 뱡향을 위한 벡터
 
@@ -58,6 +61,23 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+           //처음 C를 누른 경우
+           if(Player_Convert == false)
+            {
+                Player_Convert = true;
+
+            }
+           //두번째로 C를 누른 경우
+            else
+            {
+                Player_Convert = false;
+            }
+
+        }
+        Camera_Speed();
+
         CameraRotation();
         CharacterRotation();
         TryRun(); // 반드시 Move위에 있어야함
@@ -65,6 +85,22 @@ public class PlayerController : MonoBehaviour
         
 
     }
+    private void Camera_Speed()
+    {
+        if(Player_Convert == true)
+        {
+            walkSpeed = 0;
+            runSpeed = 0;
+
+        }
+        else
+        {
+            walkSpeed = 8;
+            runSpeed = 15;
+        }
+
+    }
+
     private void TryRun()
     {
 
