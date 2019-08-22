@@ -12,9 +12,9 @@ public class PlayerController : MonoBehaviour
     // 스피드 조정 변수
 
 
-    private float walkSpeed = 8; //이동속도 설정 
-    private float runSpeed = 15;
-    private float applySpeed;
+    public float walkSpeed = 8; //이동속도 설정 
+    public float runSpeed = 15;
+    public float applySpeed;
     private float gravity = 20; //캐릭터 컨트롤러에서는 중력을 임의로 만들어야됨
    // 스테미너 
     [SerializeField]
@@ -76,16 +76,23 @@ public class PlayerController : MonoBehaviour
             }
 
         }
-        Camera_Speed();
+        //Camera_Speed();<-이함수 먼저 지워놈
 
-        CameraRotation();
-        CharacterRotation();
         TryRun(); // 반드시 Move위에 있어야함
-        Move();
+
+        if (!Player_Convert)
+        {
+            CameraRotation();
+            CharacterRotation();
+            Move();
+        }
+        
         
 
     }
-    private void Camera_Speed()
+
+
+    /*private void Camera_Speed()
     {
         if(Player_Convert == true)
         {
@@ -99,7 +106,7 @@ public class PlayerController : MonoBehaviour
             runSpeed = 15;
         }
 
-    }
+    }*/
 
     private void TryRun()
     {
