@@ -15,13 +15,16 @@ public class InteractScript : MonoBehaviour
     {
         Ray ray = new Ray(transform.position, transform.forward);
         RaycastHit hit;
-        if(Physics.Raycast(ray, out hit, interactDistance))
+        if (Input.GetKeyDown(KeyCode.F))
         {
-            if (hit.collider.tag=="doors")
+            if (Physics.Raycast(ray, out hit, interactDistance))
             {
-                //Debug.Log("player_door_Hit");
-                hit.collider.gameObject.GetComponentInParent<DoorScript>().ChangeDoorState();
+                if (hit.collider.tag == "doors")
+                {
+                    //Debug.Log("player_door_Hit");
+                    hit.collider.gameObject.GetComponentInParent<DoorScript>().ChangeDoorState();
+                }
             }
-        } 
+        }
     }
 }

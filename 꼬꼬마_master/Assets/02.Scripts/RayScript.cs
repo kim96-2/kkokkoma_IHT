@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class RayScript : MonoBehaviour
 {
+    
 
     RaycastHit hit;
     public float MaxDistance = 10.0f;
@@ -22,10 +23,11 @@ public class RayScript : MonoBehaviour
             Debug.DrawRay(transform.position, transform.forward * MaxDistance, Color.blue, 0.3f);
             if(Physics.Raycast(transform.position, transform.forward, out hit, MaxDistance))
             {
-                // 앞에 닿으면 F로 상호작용할 수 있음
-
-                hit.transform.GetComponent<MeshRenderer>().material.color = Color.red;
-
+                if (hit.collider.tag == "doors")
+                {
+                    //Debug.Log("player_door_Hit");
+                    hit.collider.gameObject.GetComponentInParent<DoorScript>().ChangeDoorState();
+                }
             }
 
         }
