@@ -16,7 +16,7 @@ public class CavinetScript : MonoBehaviour
 
 
 
-    public void ChangeDoorState()
+    public void ChangeCavinetState()
     {
         open = !open;
 

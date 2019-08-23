@@ -14,6 +14,7 @@ void Start()
     }
     public void ChangeDoorState()
     {
+        //Debug.Log("CangeDoorState");
         open = !open;
            
     }

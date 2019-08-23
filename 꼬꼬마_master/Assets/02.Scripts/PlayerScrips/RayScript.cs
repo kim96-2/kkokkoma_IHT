@@ -26,13 +26,16 @@ public class RayScript : MonoBehaviour
                 if (hit.collider.tag == "doors")
                 {
                     //Debug.Log("player_door_Hit");
-                    hit.collider.gameObject.GetComponentInParent<DoorScript>().ChangeDoorState();
+                    hit.collider.gameObject.GetComponent<DoorScript>().ChangeDoorState();
                 }
-
-                if (hit.collider.tag == "StrangeObject")
+                else if (hit.collider.tag == "StrangeObject")
                 {
                     //Debug.Log("player_door_Hit");
                     hit.collider.gameObject.GetComponentInParent<Onoff>().turnoff();
+                }
+                else if(hit.collider.tag == "cavinets")
+                {
+                    hit.collider.gameObject.GetComponentInParent<CavinetScript>().ChangeCavinetState();
                 }
 
 
