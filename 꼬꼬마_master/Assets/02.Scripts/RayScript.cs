@@ -28,6 +28,15 @@ public class RayScript : MonoBehaviour
                     //Debug.Log("player_door_Hit");
                     hit.collider.gameObject.GetComponentInParent<DoorScript>().ChangeDoorState();
                 }
+
+                if (hit.collider.tag == "StrangeObject")
+                {
+                    //Debug.Log("player_door_Hit");
+                    hit.collider.gameObject.GetComponentInParent<Onoff>().turnoff();
+                }
+
+
+
             }
 
         }
