@@ -9,6 +9,7 @@ TagManager:
   - cavinets
   - StrangeObject
   - Key
+  - FinalDoor
   layers:
   - Default
   - TransparentFX

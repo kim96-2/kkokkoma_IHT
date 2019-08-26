@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class RayScript : MonoBehaviour
 {
-
     public GameObject CountText;
     RaycastHit hit;
     public float MaxDistance = 10.0f;
@@ -53,6 +52,13 @@ public class RayScript : MonoBehaviour
 
                     CountText.SendMessage("CountUp");
                     
+                }
+
+                if((hit.collider.tag == "FinalDoor") && (CountUI.count == 5))
+                {
+
+                    hit.collider.gameObject.GetComponent<DoorScript>().ChangeDoorState();
+
                 }
 
 
