@@ -16,9 +16,16 @@ public class PlayerController : MonoBehaviour
     public float runSpeed = 15;
     public float applySpeed;
     private float gravity = 20; //캐릭터 컨트롤러에서는 중력을 임의로 만들어야됨
-   // 스테미너 
+   
+    
+    // 스테미너 
     [SerializeField]
-    private float health;
+    private float health = 100 , maxhealth = 100;
+
+    Rect healthRect;
+    Texture2D healthTexture;
+
+
 
     // 이동 뱡향을 위한 벡터
 
@@ -56,6 +63,12 @@ public class PlayerController : MonoBehaviour
         //myRigid = GetComponent<Rigidbody>();   //Rigidbody 변수에 삼입     
         PlayerCon = GetComponent<CharacterController>();//캐릭터 컨트롤러 가져옴
         applySpeed = walkSpeed;
+
+        healthRect = new Rect(Screen.width / 10, Screen.height * 9 / 10, Screen.width / 3, Screen.height / 50);
+        healthTexture = new Texture2D(1, 1);
+        healthTexture.SetPixel(0, 0, Color.white);
+        healthTexture.Apply();
+
     }
 
 
@@ -187,5 +200,17 @@ public class PlayerController : MonoBehaviour
 
         theCamera.transform.localEulerAngles = new Vector3(currentCameraRotationX, 0f, 0f);
     }
+
+
+    void OnGUI()
+    {
+
+        float ratio = health / maxhealth;
+        float rectWidth = ratio * Screen.width / 3;
+        healthRect.width = rectWidth;
+        GUI.DrawTexture(healthRect, healthTexture);
+
+    }
+
 
 }
