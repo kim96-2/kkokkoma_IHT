@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class RayScript : MonoBehaviour
 {
-   
 
+    public GameObject CountText;
     RaycastHit hit;
     public float MaxDistance = 10.0f;
     public int KeyNumber = 0;
@@ -14,7 +14,7 @@ public class RayScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        CountText = GameObject.Find("CountText");
     }
 
     // Update is called once per frame
@@ -50,6 +50,8 @@ public class RayScript : MonoBehaviour
 
                     Destroy(hit.collider.gameObject);
                     KeyNumber += 1;
+
+                    CountText.SendMessage("CountUp");
                     
                 }
 

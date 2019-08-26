@@ -15,6 +15,7 @@ public class Appear : MonoBehaviour
     public int Keynumber = 0;
     int keycount = 0;
 
+
     public int k;
 
     // Start is called before the first frame update
