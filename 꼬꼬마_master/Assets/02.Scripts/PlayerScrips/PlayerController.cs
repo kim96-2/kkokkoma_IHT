@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     // 서브 카메라 전환시 플레이어 이동 금지 구현
 
-    public bool Player_Convert = false;
+    public  static bool Player_Convert = false;
 
 
     // 스피드 조정 변수
@@ -61,7 +61,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.C))
+        if (Input.GetKeyDown(KeyCode.C) || (Input.GetKeyDown(KeyCode.P)))
         {
            //처음 C를 누른 경우
            if(Player_Convert == false)
