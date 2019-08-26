@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Nothing : MonoBehaviour
+public class MouseCursor_Lock : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
