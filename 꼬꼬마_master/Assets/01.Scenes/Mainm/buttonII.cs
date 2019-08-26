@@ -1,9 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEngine.SceneManagement;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class buttonI : MonoBehaviour
+public class buttonII : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -18,6 +18,6 @@ public class buttonI : MonoBehaviour
     }
     public void ChangeGameScene()
     {
-        SceneManager.LoadScene("IHT");
+        SceneManager.LoadScene("Manual1");
     }
 }
