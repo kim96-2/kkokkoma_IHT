@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class RayScript : MonoBehaviour
 {
-    
+   
 
     RaycastHit hit;
     public float MaxDistance = 10.0f;
+    public int KeyNumber = 0;
+
 
     // Start is called before the first frame update
     void Start()
@@ -41,6 +43,14 @@ public class RayScript : MonoBehaviour
                 else if(hit.collider.tag == "cavinets")
                 {
                     hit.collider.gameObject.GetComponentInParent<CavinetScript>().ChangeCavinetState();
+                }
+
+                if(hit.collider.tag == "Key")
+                {
+
+                    Destroy(hit.collider.gameObject);
+                    KeyNumber += 1;
+                    
                 }
 
 

@@ -2895,7 +2895,7 @@ RectTransform:
   m_Children:
   - {fileID: 1992442003}
   m_Father: {fileID: 0}
-  m_RootOrder: 31
+  m_RootOrder: 27
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -10087,7 +10087,7 @@ GameObject:
   - component: {fileID: 1278395677}
   m_Layer: 13
   m_Name: player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13060,6 +13060,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxDistance: 10
+  KeyNumber: 0
 --- !u!1 &1604562484
 GameObject:
   m_ObjectHideFlags: 0
@@ -14926,6 +14927,7 @@ Transform:
   - {fileID: 345893444}
   - {fileID: 1367653589}
   - {fileID: 2057554777}
+  - {fileID: 1771251349}
   m_Father: {fileID: 0}
   m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -15250,14 +15252,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1763662996}
     m_Modifications:
+    - target: {fileID: 1947637386273484, guid: ba649581e7ae3f54a9892d5967eaaf4a, type: 3}
+      propertyPath: m_Name
+      value: Paint_10
+      objectReference: {fileID: 0}
     - target: {fileID: 7976865334718944964, guid: 6e60ef0f35fcd3d4dbd6fee360fc65c6,
         type: 3}
       propertyPath: m_RootOrder
       value: 79
-      objectReference: {fileID: 0}
-    - target: {fileID: 1947637386273484, guid: ba649581e7ae3f54a9892d5967eaaf4a, type: 3}
-      propertyPath: m_Name
-      value: Paint_10
       objectReference: {fileID: 0}
     - target: {fileID: 4652225833230060, guid: ba649581e7ae3f54a9892d5967eaaf4a, type: 3}
       propertyPath: m_LocalPosition.x
