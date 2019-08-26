@@ -30,8 +30,13 @@ public class RayScript : MonoBehaviour
                 }
                 else if (hit.collider.tag == "StrangeObject")
                 {
-                    Debug.Log("r_Hit");
-                    hit.collider.gameObject.GetComponentInParent<Onoff>().turnoff();
+
+                    if (hit.collider.gameObject.GetComponentInParent<Onoff>() == true)
+                    {
+                        hit.collider.gameObject.GetComponentInParent<Onoff>().turnoff();
+                        Appear.count -= 1;
+                    }
+                    
                 }
                 else if(hit.collider.tag == "cavinets")
                 {
