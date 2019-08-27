@@ -10,6 +10,8 @@ TagManager:
   - StrangeObject
   - Key
   - FinalDoor
+  - ClearSpot
+  - StartPresent
   layers:
   - Default
   - TransparentFX
@@ -27,7 +29,7 @@ TagManager:
   - player
   - cavinets
   - Interior
-  - 
+  - something
   - 
   - 
   - 

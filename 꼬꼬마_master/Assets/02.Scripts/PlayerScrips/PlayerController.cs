@@ -212,5 +212,16 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    private void OnTriggerEnter(Collider coll)
+    {
+        if (coll.tag == "ghost")
+        {
+            GameOverCheckScene.GameOverCheck = 1;
+        }
+        else if (coll.tag == "ClearSpot")
+        {
+            GameOverCheckScene.GameOverCheck = 2;
+        }
+    }
 
 }

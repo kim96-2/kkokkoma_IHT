@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-
+using UnityEngine.Audio;
 public class test : MonoBehaviour
 {
     public GameObject[] targets;
@@ -11,6 +11,8 @@ public class test : MonoBehaviour
     public Transform TargetPos;
 
     public NavMeshAgent agent;
+
+    public AudioSource footstep;
 
     public int paths ;
     public int pathnum;
@@ -26,6 +28,7 @@ public class test : MonoBehaviour
         Player = GameObject.FindGameObjectWithTag("Player");
 
         agent = GetComponent<NavMeshAgent>();
+        footstep = GetComponent<AudioSource>();
         
     }
 
@@ -33,6 +36,7 @@ public class test : MonoBehaviour
     void Update()
     {
         agent.SetDestination(TargetPos.position);
+        //footsteps();
     }
 
     private void OnTriggerEnter(Collider coll)
@@ -63,6 +67,18 @@ public class test : MonoBehaviour
     }
 
    
-
+    void footsteps()
+    {
+        Debug.Log("speed = " + agent.velocity.sqrMagnitude);
+        if (agent.velocity==Vector3.zero)
+        {
+            
+            footstep.Stop();
+        }
+        else
+        {
+            footstep.Play();
+        }
+    }
     
 }

@@ -23,7 +23,8 @@ public class Appear : MonoBehaviour
     {
         StartCoroutine("Choose");
         StartCoroutine("KeyAppear");
-    
+
+        count = 0;
     }
 
     void Update()
@@ -38,11 +39,15 @@ public class Appear : MonoBehaviour
         {
             if (count < 3)
             {
-                yield return new WaitForSeconds(3f);
+                yield return new WaitForSeconds(10f);
             }
-            else if(count<=spots.Length-1)
+            else if(count<=10)
             {
-                yield return new WaitForSeconds(1f);
+                yield return new WaitForSeconds(6f);
+            }
+            else if (count <= spots.Length - 1)
+            {
+                yield return new WaitForSeconds(4f);
             }
             else
             {

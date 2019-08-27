@@ -47,8 +47,11 @@ public class PauseMenu : MonoBehaviour
 
     public void ClickExit()
     {
-        Debug.Log("게임종료");
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
         Application.Quit();
+#endif
 
     }
 
