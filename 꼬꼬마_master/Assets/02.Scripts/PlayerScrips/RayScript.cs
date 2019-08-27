@@ -1,27 +1,28 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class RayScript : MonoBehaviour
 {
-    public GameObject CountText;
+    public Text CountText;
     RaycastHit hit;
-    public float MaxDistance = 10.0f;
+    public float MaxDistance = 5.0f;
     public int KeyNumber = 0;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        CountText = GameObject.Find("CountText");
+        //CountText = GameObject.Find("CountText");
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetMouseButtonDown(0))
         {
-            Debug.DrawRay(transform.position, transform.forward * MaxDistance, Color.blue, 0.3f);
+            //Debug.DrawRay(transform.position, transform.forward * MaxDistance, Color.blue, 0.3f);
             if(Physics.Raycast(transform.position, transform.forward, out hit, MaxDistance))
             {
                 if (hit.collider.tag == "doors")
@@ -44,21 +45,25 @@ public class RayScript : MonoBehaviour
                     hit.collider.gameObject.GetComponentInParent<CavinetScript>().ChangeCavinetState();
                 }
 
-                if(hit.collider.tag == "Key")
+                else if(hit.collider.tag == "Key")
                 {
 
                     Destroy(hit.collider.gameObject);
                     KeyNumber += 1;
 
-                    CountText.SendMessage("CountUp");
+                    //CountText.SendMessage("CountUp");
                     
                 }
 
-                if((hit.collider.tag == "FinalDoor") && (CountUI.count == 5))
+                else if((hit.collider.tag == "FinalDoor") && (CountUI.count == 5))
                 {
 
                     hit.collider.gameObject.GetComponent<DoorScript>().ChangeDoorState();
 
+                }
+                else if(hit.collider.tag == "StartPresent")
+                {
+                    hit.collider.gameObject.GetComponent<GameStartScript>().On = true;
                 }
 
 
@@ -66,6 +71,8 @@ public class RayScript : MonoBehaviour
             }
 
         }
-   
+
+        CountText.text= "Count is :" + KeyNumber ;
+
     }
 }

@@ -15,7 +15,8 @@ public class GhostSightScript : MonoBehaviour
     public float NormalSpeed = 2f;
     public float FollowSpeed = 2f;
     public float MaxSpeed = 4f;
-    
+
+    float plusSpeed;
 
     public GameObject Player;
 
@@ -76,12 +77,6 @@ public class GhostSightScript : MonoBehaviour
 
     bool SearchInSight_1()//플레이어가 시아 콜라이더에 있는지 확인
     {
-        //시야각 사용하여 시야에 있는지 확인
-        float Dot = Vector3.Dot(Dir, transform.forward);
-        float Angle = Mathf.Acos(Dot)*Mathf.Rad2Deg;
-
-        if (Angle < SightAngle) return true;
-
 
         //시아에 별개로 플레이어가 가까이 있을때를 확인
         Collider[] colls;
@@ -91,6 +86,13 @@ public class GhostSightScript : MonoBehaviour
             if (coll.tag == "Player")
                 return true;
         }
+
+
+        //시야각 사용하여 시야에 있는지 확인
+        float Dot = Vector3.Dot(Dir, transform.forward);
+        float Angle = Mathf.Acos(Dot)*Mathf.Rad2Deg;
+
+        if (Angle < SightAngle) return true;
 
         return false;
 
@@ -116,6 +118,19 @@ public class GhostSightScript : MonoBehaviour
 
     void SpeedSet()//시야 조절 함수
     {
+        if (Appear.count < 5)
+        {
+            plusSpeed = 0;
+        }
+        else if (Appear.count < 10)
+        {
+            plusSpeed = 1;
+        }
+        else
+        {
+            plusSpeed = 2;
+        }
+
         float Dis = Vector3.Distance(transform.position, Player.transform.position);
 
         if (Dis <= SightshortRange) agent.speed = Mathf.Lerp(agent.speed, MaxSpeed, Time.deltaTime);

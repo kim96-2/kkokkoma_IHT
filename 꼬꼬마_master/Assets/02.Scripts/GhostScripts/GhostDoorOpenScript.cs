@@ -8,6 +8,8 @@ public class GhostDoorOpenScript : MonoBehaviour
 
     public bool CabinetChecking = false;
 
+    public float plusOpenOc;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,7 +35,18 @@ public class GhostDoorOpenScript : MonoBehaviour
             coll.gameObject.GetComponentInParent<DoorScript>().open = true;
         }else if(coll.tag == "cavinets")
         {
-
+            if (Appear.count < 5)
+            {
+                plusOpenOc = 0f;
+            }
+            else if (Appear.count < 10)
+            {
+                plusOpenOc = 1.5f;
+            }
+            else
+            {
+                plusOpenOc = 4f;
+            }
             if (GetComponent<test>().TargetPos.tag != "Player")
             {//Mathf.Abs(GetComponent<NavMeshAgent>().velocity.magnitude) < 0.1f && GetComponent<test>().TargetPos.tag != "Player"
                 if (!CabinetChecking)
@@ -41,7 +54,7 @@ public class GhostDoorOpenScript : MonoBehaviour
 
                     CabinetChecking = true;
 
-                    if (Random.Range(0f, 10f) < 5f)
+                    if (Random.Range(0f, 10f) < 5f+plusOpenOc)
                     {
 
                         StartCoroutine(OpenCavinet(coll));
