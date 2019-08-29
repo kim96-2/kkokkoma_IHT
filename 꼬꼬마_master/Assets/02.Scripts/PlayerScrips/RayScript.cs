@@ -55,10 +55,10 @@ public class RayScript : MonoBehaviour
                     
                 }
 
-                else if((hit.collider.tag == "FinalDoor") && (CountUI.count == 5))
+                else if((hit.collider.tag == "FinalDoor") && (KeyNumber == 5))
                 {
 
-                    hit.collider.gameObject.GetComponent<DoorScript>().ChangeDoorState();
+                    hit.collider.gameObject.GetComponentInParent<DoorScript>().ChangeDoorState();
 
                 }
                 else if(hit.collider.tag == "StartPresent")
